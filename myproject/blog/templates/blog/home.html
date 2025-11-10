@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog yazıları</title>
+</head>
+<body>
+<h1>📘 Blog Yazıları</h1>
+{% for post in posts %}
+<div style="border: 1px solid black;">
+    <h2>{{post.title}}</h2>
+    <p>{{post.content}}</p>
+    <small>{{post.created_at}}</small>
+
+    {% empty %}
+    <p>Hələ heç bir yazı yoxdur</p>
+    {% endfor %}
+
+</div>
+</body>
+</html>

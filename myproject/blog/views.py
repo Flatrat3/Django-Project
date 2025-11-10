@@ -1,4 +1,7 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+from .models import Post
+
 
 def home(request):
-    return HttpResponse("Hello, world. You're at the polls page.")
+    posts = Post.objects.all()
+    return render(request, 'blog/home.html', {'posts': posts})
