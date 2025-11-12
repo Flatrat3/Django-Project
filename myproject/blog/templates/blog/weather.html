@@ -11,7 +11,9 @@
     <h1>🌦️ Hava Məlumatı</h1>
     <form method="POST">
         {% csrf_token %}
-        <input type="text" name="city" placeholder="Şəhər adı daxil et" required>
+        <label>
+            <input type="text" name="city" placeholder="Şəhər adı daxil et" required>
+        </label>
         <button type="submit">Axtar</button>
     </form>
 

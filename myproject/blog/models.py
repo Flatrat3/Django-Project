@@ -7,3 +7,12 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Musician (models.Model):
+    name = models.CharField(max_length=100)
+    instrument = models.CharField(max_length=100)
+    age = models.IntegerField()
+
+    def __str__(self):
+        return self.name
