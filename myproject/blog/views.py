@@ -1,6 +1,11 @@
+from urllib import request
+
 import requests
+from django.contrib.messages.api import success
 from django.shortcuts import render
-from .models import Post
+from fontTools.misc.cython import returns
+
+from .models import Post, Musician
 import json
 
 
@@ -46,3 +51,19 @@ def weather_view(request):
 
 
     return render(request, 'blog/weather.html', {'weather_data': weather_data})
+
+def add_musician(request):
+    success = None
+
+    if request.method == "POST":
+        name = request.POST.get("name")
+        instrument = request.POST.get("instrument")
+        age = request.POST.get("age")
+
+        if name and instrument and age:
+            Musician.objects.create(name=name, instrument=instrument, age=age)
+            success = f"{name} adlı musiqiçi əlavə olundu!"
+
+    musicians = Musician.objects.all()
+    return render(request, "blog/add_musician.html", {"musicians": musicians, "success": success})
+
