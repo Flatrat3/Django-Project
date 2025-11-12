@@ -1,12 +1,9 @@
-from urllib import request
-
 import requests
-from django.contrib.messages.api import success
 from django.shortcuts import render
-from fontTools.misc.cython import returns
+
 
 from .models import Post, Musician
-import json
+
 
 
 def home(request):

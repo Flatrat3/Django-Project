@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <title>Musiqiçi Əlavə Et</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #f5f5f5; }
+    .container { background: white; padding: 20px; border-radius: 10px; width: 400px; margin: auto; }
+    input, button { width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 5px; }
+    .errorlist { color: red; list-style: none; padding: 0; }
+    .success { color: green; font-weight: bold; }
+    ul { padding-left: 20px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🎵 Yeni Musiqiçi Əlavə Et</h2>
+
+    {% if success %}
+      <p class="success">{{ success }}</p>
+    {% endif %}
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <label for="name">Ad Soyad:</label>
+      <input type="text" name="name" id="name" placeholder="Musiqiçinin adı" required>
+
+      <label for="instrument">Alət:</label>
+      <input type="text" name="instrument" id="instrument" placeholder="Məsələn: gitara" required>
+
+      <label for="age">Yaş:</label>
+      <input type="number" name="age" id="age" placeholder="Yaşı" min="10" required>
+
+      <button type="submit">Əlavə et</button>
+    </form>
+
+    <hr>
+    <h3>Əlavə olunan musiqiçilər:</h3>
+    <ul>
+  {% for m in musicians %}
+    <li>
+        {{ m.name }} - {{ m.instrument }} ({{ m.age }} yaş)
+    </li>
+  {% endfor %}
+</ul>
+  </div>
+</body>
+</html>
+
+
